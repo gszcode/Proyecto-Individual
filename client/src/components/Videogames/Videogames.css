@@ -1,0 +1,30 @@
+.div__container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.section__videogames {
+  width: 60%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  right: 0;
+}
+
+@media screen and (min-width: 740px) {
+  .section__videogames {
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+}
+
+@media screen and (min-width: 1050px) {
+  .section__videogames {
+    width: 70%;
+    margin: 0 20px;
+  }
+}
