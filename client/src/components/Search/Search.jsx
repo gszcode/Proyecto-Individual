@@ -1,22 +1,20 @@
 import { useState } from "react";
 import { FaSearch } from "react-icons/fa";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { get_videogames_name } from "../../redux/action";
 import "./Search.css";
 
 const Search = () => {
   const [name, setName] = useState("");
   const dispatch = useDispatch();
-  const state = useSelector((state) => state.videogames_name);
 
   const handleChange = (e) => {
     setName(e.target.value);
   };
 
-  console.log(state);
-
   const handleClick = (e) => {
     dispatch(get_videogames_name(name));
+    setName("");
   };
 
   return (

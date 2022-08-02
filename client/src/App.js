@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import CreateVideogame from "./components/CreateVideogame/CreateVideogame";
 import Details from "./components/Details/Details";
 import Landing from "./components/Landing/Landing";
 import NotFound from "./components/NotFound/NotFound";
@@ -11,6 +12,7 @@ function App() {
         <Route path="/" element={<Landing />} />
         <Route path="/videogames" element={<Videogames />} />
         <Route path="/videogame/:id" element={<Details />} />
+        <Route path="/videogame/create" element={<CreateVideogame />} />
 
         <Route path="*" element={<NotFound />} />
       </Routes>

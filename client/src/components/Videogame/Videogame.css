@@ -6,7 +6,8 @@ a {
   width: 240px;
   height: 300px;
   border: 1px solid black;
-  margin-top: 80px;
+  margin-top: 60px;
+  border-radius: 10px;
 }
 
 .article__image {
@@ -18,6 +19,7 @@ a {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: 10px;
 }
 
 .article__div__text {
@@ -72,13 +74,13 @@ a {
 
 @media screen and (min-width: 1060px) {
   .article__videogame {
-    width: 280px;
+    width: 250px;
     height: 350px;
     position: relative;
   }
 
   .article__image {
-    width: 280px;
-    height: 280px;
+    width: 250px;
+    height: 270px;
   }
 }

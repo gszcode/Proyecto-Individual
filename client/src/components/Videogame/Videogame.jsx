@@ -13,9 +13,13 @@ const Videogame = ({ game }) => {
           <span className="article__div__span">{game.rating}</span>
         </div>
         <div className="article__div__genre">
-          {game.genres.map((genre) => (
-            <p key={genre}> {genre} /</p>
-          ))}
+          {game.genres.map((genre) =>
+            typeof genre === "object" ? (
+              <p key={genre.id}> {genre.name} /</p>
+            ) : (
+              <p key={genre}> {genre} /</p>
+            )
+          )}
         </div>
       </Link>
     </article>

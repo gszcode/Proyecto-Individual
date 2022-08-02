@@ -1,0 +1,25 @@
+.nav__paginated {
+  width: 60%;
+  margin: auto;
+  margin: 20px 0 -20px 0;
+  display: block;
+}
+
+.nav__paginated .nav__paginated__ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+}
+
+.nav__paginated .nav__paginated__ul button {
+  margin: 0 3px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 850px) {
+  .nav__paginated {
+    width: 100%;
+  }
+}
