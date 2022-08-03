@@ -7,6 +7,7 @@ export const CREATE_VIDEOGAME = "CREATE_VIDEOGAME";
 export const FILTER_BY_GENRE = "FILTER_BY_GENRE";
 export const FILTER_RATING = "FILTER_RATING";
 export const FILTER_ALPHABETIC = "FILTER_ALPHABETIC";
+export const CREATED_EXISTING = "CREATED_EXISTING";
 
 // obtener todos los video juegos
 export const get_videogames = () => {
@@ -72,7 +73,7 @@ export const post_create_videogame = (game) => {
   };
 };
 
-// filtro por genero
+// filtrado por genero
 export const filter_by_genre = (genre) => {
   return {
     type: FILTER_BY_GENRE,
@@ -80,7 +81,7 @@ export const filter_by_genre = (genre) => {
   };
 };
 
-// filtro por puntuacion
+// filtrado por puntuacion
 export const filter_rating = (rating) => {
   return {
     type: FILTER_RATING,
@@ -93,5 +94,13 @@ export const filter_alphabetic = (name) => {
   return {
     type: FILTER_ALPHABETIC,
     payload: name,
+  };
+};
+
+// filtrado por creado o existente
+export const created_existing = (value) => {
+  return {
+    type: CREATED_EXISTING,
+    payload: value,
   };
 };

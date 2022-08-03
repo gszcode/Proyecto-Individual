@@ -1,8 +1,7 @@
 .nav {
   opacity: 1;
   width: 40%;
-  height: 99.8vh;
-  border: 1px solid black;
+  height: 100vh;
 
   display: flex;
   flex-direction: column;
@@ -10,6 +9,15 @@
   transition: all 500ms;
   position: fixed;
   left: 0;
+
+  background: rgb(175, 8, 8);
+  background: linear-gradient(
+    90deg,
+    rgba(175, 8, 8, 0.8407738095238095) 0%,
+    rgba(164, 22, 22, 1) 150%
+  );
+  z-index: 999;
+  box-shadow: 0 0 3px 5px rgba(239, 91, 91, 0.2);
 }
 
 .nav__logo {
@@ -23,6 +31,7 @@
   height: 100%;
   object-fit: cover;
   border-radius: 15px;
+  box-shadow: 0 0 15px rgba(12, 12, 12, 0.907);
 }
 
 .nav__filter {
@@ -42,16 +51,38 @@
   color: #000;
   line-height: 30px;
   text-decoration: none;
+
+  background: rgb(130, 7, 7);
+  border: none;
+  box-shadow: 0 0 15px rgba(12, 12, 12, 0.907);
+  color: #ccc;
+  font-weight: 600;
+  transition: all 500ms;
 }
 
-.nav__select__alphabetical,
-.nav__select__rating,
-.nav__select__genre {
+.nav__link:hover {
+  background: rgba(12, 12, 12, 0.907);
+}
+
+.nav__select {
   width: 85%;
   height: 35px;
   border-radius: 10px;
   margin: 15px 0;
   padding-left: 10px;
+  cursor: pointer;
+
+  background: rgb(130, 7, 7);
+  border: none;
+  box-shadow: 0 0 15px rgba(12, 12, 12, 0.907);
+  color: #ccc;
+  outline: none;
+  font-weight: 600;
+  transition: all 500ms;
+}
+
+.nav__select:hover {
+  background: rgba(12, 12, 12, 0.907);
 }
 
 @media screen and (min-width: 640px) {
@@ -79,9 +110,7 @@
     width: 80%;
   }
 
-  .nav__select__alphabetical,
-  .nav__select__rating,
-  .nav__select__genre,
+  .nav__select,
   .nav__link {
     width: 100%;
     height: 40px;

@@ -34,6 +34,10 @@ module.exports = (sequelize) => {
         type: DataTypes.TEXT,
         defaultValue: "https://www.freepik.com/free-photos-vectors/game-button",
       },
+      created: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: true,
+      },
     },
     {
       timestamps: false,

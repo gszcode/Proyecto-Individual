@@ -32,20 +32,24 @@ const Videogames = () => {
     <div className="div__container">
       <Navbar />
       <section className="section__videogames">
-        <Paginated
-          paginated={paginated}
-          videogames={videogames.length}
-          gamesPerPage={gamesPerPage}
-        />
-        {videogames_name.length ? (
-          videogames_name.map((game) => <Videogame key={game.id} game={game} />)
-        ) : currentVideogames.length ? (
-          currentVideogames.map((game) => (
-            <Videogame key={game.id} game={game} />
-          ))
-        ) : (
+        {!currentVideogames.length ? (
           <Loading />
+        ) : (
+          <Paginated
+            paginated={paginated}
+            videogames={videogames.length}
+            gamesPerPage={gamesPerPage}
+          />
         )}
+
+        {videogames_name.length
+          ? videogames_name.map((game) => (
+              <Videogame key={game.id} game={game} />
+            ))
+          : currentVideogames.length &&
+            currentVideogames.map((game) => (
+              <Videogame key={game.id} game={game} />
+            ))}
       </section>
     </div>
   );

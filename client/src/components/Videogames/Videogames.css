@@ -1,7 +1,10 @@
 .div__container {
+  min-height: 100vh;
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end;
+  background-image: url("../../img/home.jpg");
+  background-attachment: fixed;
 }
 
 .section__videogames {
@@ -11,6 +14,7 @@
   flex-direction: column;
   align-items: center;
   position: relative;
+  padding-bottom: 40px;
 }
 
 @media screen and (min-width: 740px) {

@@ -56,7 +56,11 @@ const CreateVideogame = () => {
     let errors = {};
 
     if (!input.name.length) errors.name = "Name required";
+    if (!input.image.length) errors.image = "Image required";
+    if (!input.genres.length) errors.genres = "Genres required";
     if (!input.platforms.length) errors.platforms = "Platforms required";
+    if (!input.released.length) errors.released = "Released required";
+    if (!input.rating.length) errors.rating = "Rating required";
     if (!input.description.length) errors.description = "Description required";
 
     return errors;
@@ -100,86 +104,80 @@ const CreateVideogame = () => {
           ? [...form.genres, e.target.value]
           : [...form.platforms, e.target.value],
     });
-
-    setErrors(
-      validate({
-        ...form,
-        [e.target.name]:
-          e.target.name === "genres"
-            ? [...form.genres, e.target.value]
-            : [...form.platforms, e.target.value],
-      })
-    );
   };
 
   return (
-    <section className="section__form">
-      {/* titulo */}
-      <h1 className="section__form__title">Create Game</h1>
-      <Link className="section_form__back" to="/videogames">
-        <FaBackward />
-      </Link>
+    <div className="form__container">
+      <section className="section__form">
+        {/* titulo */}
+        <h1 className="section__form__title">Create Game</h1>
+        <Link className="section_form__back" to="/videogames">
+          <FaBackward />
+        </Link>
 
-      {/* formulario */}
-      <form className="form" onSubmit={(e) => handleSubmit(e)}>
-        {/* input nombre */}
-        <input
-          type="text"
-          placeholder="Name"
-          name="name"
-          value={form.name}
-          onChange={handleChange}
-        />
-        {errors.name && <p className="error__text">{errors.name}</p>}
+        {/* formulario */}
+        <form className="form" onSubmit={(e) => handleSubmit(e)}>
+          {/* input nombre */}
+          <input
+            type="text"
+            placeholder="Name"
+            name="name"
+            value={form.name}
+            onChange={handleChange}
+            required
+            autoComplete="off"
+          />
+          {errors.name && <p className="error__text">{errors.name}</p>}
 
-        {/* input fecha */}
-        <input
-          type="date"
-          name="released"
-          value={form.released}
-          onChange={handleChange}
-        />
+          {/* input imagen */}
+          <input
+            type="text"
+            placeholder="URL image"
+            name="image"
+            value={form.image}
+            onChange={handleChange}
+            required
+            autoComplete="off"
+          />
+          {errors.image && <p className="error__text">{errors.image}</p>}
 
-        {/* input imagen */}
-        <input
-          type="text"
-          placeholder="URL image"
-          name="image"
-          value={form.image}
-          onChange={handleChange}
-        />
+          {/* input genrero */}
+          <select name="genres" onChange={handleSelect}>
+            <option>Genres</option>
+            {videogame_genres.map((genre) => (
+              <option key={genre} value={genre} onChange={handleChange}>
+                {genre}
+              </option>
+            ))}
+          </select>
+          <div className="div__btn__delete">
+            {form.genres.map((el) => (
+              <div key={el} className="div__delete">
+                <p>{el}</p>
+                <button
+                  className="btn__delete"
+                  onClick={() => handleDelete(el)}
+                >
+                  X
+                </button>
+              </div>
+            ))}
+          </div>
+          {errors.genres && <p className="error__text">{errors.genres}</p>}
 
-        {/* input genrero */}
-        <select name="genres" onChange={handleSelect}>
-          <option>Genres</option>
-          {videogame_genres.map((genre) => (
-            <option key={genre} value={genre} onChange={handleChange}>
-              {genre}
-            </option>
-          ))}
-        </select>
-        <div className="div__btn__delete">
-          {form.genres.map((el) => (
-            <div key={el} className="div__delete">
-              <p>{el}</p>
-              <button className="btn__delete" onClick={() => handleDelete(el)}>
-                X
-              </button>
-            </div>
-          ))}
-        </div>
-
-        {/* input plataforma */}
-        <select name="platforms" onChange={handleSelect}>
-          <option>Platforms</option>
-          {platforms.map((p) => (
-            <option key={p} value={p} onChange={handleChange}>
-              {p}
-            </option>
-          ))}
-        </select>
-        {errors.platforms && <p className="error__text">{errors.platforms}</p>}
-        {/* <div className="div__btn__delete">
+          {/* input plataforma */}
+          <select name="platforms" onChange={handleSelect} required>
+            <option>Platforms</option>
+            {platforms.map((p) => (
+              <option key={p} value={p} onChange={handleChange}>
+                {p}
+              </option>
+            ))}
+          </select>
+          {errors.platforms && (
+            <p className="error__text">{errors.platforms}</p>
+          )}
+          {/* <div className="div__btn__delete">
           {form.platforms.map((el) => (
             <div key={el} className="div__delete">
               <p>{el}</p>
@@ -190,30 +188,45 @@ const CreateVideogame = () => {
           ))}
         </div> */}
 
-        {/* input puntuacion */}
-        <h4 className="input__platforms__title">Rating</h4>
-        <input
-          type="number"
-          placeholder="Rating"
-          name="rating"
-          value={form.rating}
-          onChange={handleChange}
-        />
+          {/* input fecha */}
+          <h4 className="input__title__option">Release Date</h4>
+          <input
+            type="date"
+            name="released"
+            value={form.released}
+            onChange={handleChange}
+            required
+          />
+          {errors.released && <p className="error__text">{errors.released}</p>}
 
-        {/* input descripcion */}
-        <textarea
-          placeholder="Description"
-          name="description"
-          value={form.description}
-          onChange={handleChange}
-        ></textarea>
-        {errors.description && (
-          <p className="error__text">{errors.description}</p>
-        )}
+          {/* input puntuacion */}
+          <h4 className="input__title__option">Rating</h4>
+          <input
+            type="number"
+            placeholder="Rating"
+            name="rating"
+            value={form.rating}
+            onChange={handleChange}
+            required
+          />
+          {errors.rating && <p className="error__text">{errors.rating}</p>}
 
-        <button className="form__btn">Send</button>
-      </form>
-    </section>
+          {/* input descripcion */}
+          <textarea
+            placeholder="Description"
+            name="description"
+            value={form.description}
+            onChange={handleChange}
+            required
+          ></textarea>
+          {errors.description && (
+            <p className="error__text">{errors.description}</p>
+          )}
+
+          <button className="form__btn">Send</button>
+        </form>
+      </section>
+    </div>
   );
 };
 

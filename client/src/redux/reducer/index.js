@@ -1,4 +1,5 @@
 import {
+  CREATED_EXISTING,
   CREATE_VIDEOGAME,
   FILTER_ALPHABETIC,
   FILTER_BY_GENRE,
@@ -79,6 +80,16 @@ export const videogame_reducer = (state = initialState, action) => {
       return {
         ...state,
         videogames: orderAlphabetic,
+      };
+    case CREATED_EXISTING:
+      const videogamesCreated = state.all_videogames;
+      const created =
+        action.payload === "created"
+          ? videogamesCreated.filter((e) => e.created)
+          : videogamesCreated.filter((e) => !e.created);
+      return {
+        ...state,
+        videogames: action.payload === "All" ? state.all_videogames : created,
       };
     default:
       return state;

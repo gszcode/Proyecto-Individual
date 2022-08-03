@@ -18,7 +18,7 @@ const Details = () => {
   }, [dispatch, id]);
 
   return (
-    <>
+    <div className="details__container">
       {state ? (
         <section className="section__details">
           <Link className="section_details__back" to="/videogames">
@@ -34,16 +34,21 @@ const Details = () => {
                 <div className="article__details__date">
                   <p>
                     Released:
-                    <span> {state.released} </span>
+                    <span className="date"> {state.released} </span>
                   </p>
                   <p>
                     Rating:
-                    <span> {state.rating} </span>
+                    <span className="date"> {state.rating} </span>
                   </p>
                 </div>
                 <div className="article__details__text">
-                  <p>Platforms: {`${state.platforms}`} </p>
-                  <p>Genres: {`${state.genres}`} </p>
+                  <p>
+                    Platforms:{" "}
+                    <span className="date">{`${state.platforms}`}</span>{" "}
+                  </p>
+                  <p>
+                    Genres: <span className="date">{`${state.genres}`}</span>{" "}
+                  </p>
                 </div>
               </div>
             </div>
@@ -56,7 +61,7 @@ const Details = () => {
       ) : (
         <Loading />
       )}
-    </>
+    </div>
   );
 };
 

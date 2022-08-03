@@ -5,11 +5,13 @@ import Search from "../Search/Search";
 import { useDispatch, useSelector } from "react-redux";
 import "./Navbar.css";
 import {
+  created_existing,
   filter_alphabetic,
   filter_by_genre,
   filter_rating,
   get_videogame_genres,
 } from "../../redux/action";
+import Footer from "../Footer/Footer";
 
 const Navbar = () => {
   const dispatch = useDispatch();
@@ -35,6 +37,10 @@ const Navbar = () => {
     dispatch(filter_alphabetic(e.target.value));
   };
 
+  const handleCreated = (e) => {
+    dispatch(created_existing(e.target.value));
+  };
+
   return (
     <>
       <nav className="nav">
@@ -53,21 +59,21 @@ const Navbar = () => {
 
           <select
             onChange={handleAlphabetic}
-            className="nav__select__alphabetical"
+            className="nav__select"
             name="alphabetical"
           >
-            <option>Alphabetical Order:</option>
+            <option className="alphabetical">Alphabetical Order:</option>
             <option value="asc">A - Z</option>
             <option value="desc">Z - A</option>
           </select>
 
-          <select onChange={handleRating} className="nav__select__rating">
+          <select onChange={handleRating} className="nav__select">
             <option>Rating Orden:</option>
             <option value="asc">Ascendant</option>
             <option value="desc">Descendant</option>
           </select>
 
-          <select onChange={handleGenres} className="nav__select__genre">
+          <select onChange={handleGenres} className="nav__select">
             <option value="All">Filter by Genre:</option>
             {videogame_genres.map((genre) => (
               <option value={genre} key={genre}>
@@ -75,7 +81,14 @@ const Navbar = () => {
               </option>
             ))}
           </select>
+
+          <select onChange={handleCreated} className="nav__select">
+            <option value="All">Created - Existing:</option>
+            <option value="created">Created</option>
+            <option value="existing">Existing</option>
+          </select>
         </section>
+        <Footer />
       </nav>
     </>
   );
