@@ -12,63 +12,95 @@ export const CREATED_EXISTING = "CREATED_EXISTING";
 // obtener todos los video juegos
 export const get_videogames = () => {
   return async (dispatch) => {
-    await fetch(`http://localhost:3001/videogames`)
-      .then((res) => res.json())
-      .then((data) => {
-        dispatch({
-          type: GET_VIDEOGAMES,
-          payload: data,
-        });
-      });
+    // await fetch(`http://localhost:3001/videogames`)
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     dispatch({
+    //       type: GET_VIDEOGAMES,
+    //       payload: data,
+    //     });
+    //   });
+
+    const res = await axios(`/videogames`);
+    const data = res.data;
+
+    return dispatch({
+      type: GET_VIDEOGAMES,
+      payload: data,
+    });
   };
 };
 
 // obtener juego por id
 export const get_videogames_id = (id) => {
   return async (dispatch) => {
-    await fetch(`http://localhost:3001/videogames/${id}`)
-      .then((res) => res.json())
-      .then((data) => {
-        dispatch({
-          type: GET_VIDEOGAME_ID,
-          payload: data,
-        });
-      });
+    // await fetch(`/videogames/${id}`)
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     dispatch({
+    //       type: GET_VIDEOGAME_ID,
+    //       payload: data,
+    //     });
+    //   });
+
+    const res = await axios(`/videogames/${id}`);
+    const data = res.data;
+
+    return dispatch({
+      type: GET_VIDEOGAME_ID,
+      payload: data,
+    });
   };
 };
 
 // obtener generos
 export const get_videogame_genres = () => {
   return async (dispatch) => {
-    await fetch(`http://localhost:3001/genres`)
-      .then((res) => res.json())
-      .then((data) => {
-        dispatch({
-          type: GET_VIDEOGAME_GENRES,
-          payload: data,
-        });
-      });
+    // await fetch(`http://localhost:3001/genres`)
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     dispatch({
+    //       type: GET_VIDEOGAME_GENRES,
+    //       payload: data,
+    //     });
+    //   });
+
+    const res = await axios(`/genres`);
+    const data = res.data;
+
+    return dispatch({
+      type: GET_VIDEOGAME_GENRES,
+      payload: data,
+    });
   };
 };
 
 // obtener juegos por nombre
 export const get_videogames_name = (name) => {
   return async (dispatch) => {
-    await fetch(`http://localhost:3001/videogames?search=${name}`)
-      .then((res) => res.json())
-      .then((data) => {
-        dispatch({
-          type: GET_VIDEOGAMES_NAME,
-          payload: data,
-        });
-      });
+    // await fetch(`http://localhost:3001/videogames?search=${name}`)
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     dispatch({
+    //       type: GET_VIDEOGAMES_NAME,
+    //       payload: data,
+    //     });
+    //   });
+
+    const res = await axios(`/videogames?search=${name}`);
+    const data = res.data;
+
+    return dispatch({
+      type: GET_VIDEOGAMES_NAME,
+      payload: data,
+    });
   };
 };
 
 // crear un juego
 export const post_create_videogame = (game) => {
   return async (dispatch) => {
-    const res = await axios.post(`http://localhost:3001/videogames`, game);
+    const res = await axios.post(`/videogames`, game);
     return dispatch({ type: CREATE_VIDEOGAME, payload: res.data });
   };
 };
