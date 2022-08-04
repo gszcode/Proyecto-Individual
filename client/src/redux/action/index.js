@@ -21,7 +21,7 @@ export const get_videogames = () => {
     //     });
     //   });
 
-    const res = await axios(`${axios.defaults.baseURL}/videogames`);
+    const res = await axios(`/videogames`);
     const data = res.data;
 
     return dispatch({
@@ -43,7 +43,7 @@ export const get_videogames_id = (id) => {
     //     });
     //   });
 
-    const res = await axios(`${axios.defaults.baseURL}/videogames/${id}`);
+    const res = await axios(`/videogames/${id}`);
     const data = res.data;
 
     return dispatch({
@@ -65,7 +65,7 @@ export const get_videogame_genres = () => {
     //     });
     //   });
 
-    const res = await axios(`${axios.defaults.baseURL}/genres`);
+    const res = await axios(`/genres`);
     const data = res.data;
 
     return dispatch({
@@ -87,9 +87,7 @@ export const get_videogames_name = (name) => {
     //     });
     //   });
 
-    const res = await axios(
-      `${axios.defaults.baseURL}/videogames?search=${name}`
-    );
+    const res = await axios(`/videogames?search=${name}`);
     const data = res.data;
 
     return dispatch({
@@ -102,7 +100,7 @@ export const get_videogames_name = (name) => {
 // crear un juego
 export const post_create_videogame = (game) => {
   return async (dispatch) => {
-    const res = await axios.post(`${axios.defaults.baseURL}/videogames`, game);
+    const res = await axios.post(`/videogames`, game);
     return dispatch({ type: CREATE_VIDEOGAME, payload: res.data });
   };
 };
