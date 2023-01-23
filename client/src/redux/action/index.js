@@ -1,13 +1,13 @@
-import axios from "axios";
-export const GET_VIDEOGAMES = "GET_VIDEOGAMES";
-export const GET_VIDEOGAME_ID = "GET_VIDEOGAME_ID";
-export const GET_VIDEOGAMES_NAME = "GET_VIDEOGAME_NAME";
-export const GET_VIDEOGAME_GENRES = "GET_VIDEOGAME_GENRES";
-export const CREATE_VIDEOGAME = "CREATE_VIDEOGAME";
-export const FILTER_BY_GENRE = "FILTER_BY_GENRE";
-export const FILTER_RATING = "FILTER_RATING";
-export const FILTER_ALPHABETIC = "FILTER_ALPHABETIC";
-export const CREATED_EXISTING = "CREATED_EXISTING";
+import axios from 'axios'
+export const GET_VIDEOGAMES = 'GET_VIDEOGAMES'
+export const GET_VIDEOGAME_ID = 'GET_VIDEOGAME_ID'
+export const GET_VIDEOGAMES_NAME = 'GET_VIDEOGAME_NAME'
+export const GET_VIDEOGAME_GENRES = 'GET_VIDEOGAME_GENRES'
+export const CREATE_VIDEOGAME = 'CREATE_VIDEOGAME'
+export const FILTER_BY_GENRE = 'FILTER_BY_GENRE'
+export const FILTER_RATING = 'FILTER_RATING'
+export const FILTER_ALPHABETIC = 'FILTER_ALPHABETIC'
+export const CREATED_EXISTING = 'CREATED_EXISTING'
 
 // obtener todos los video juegos
 export const get_videogames = () => {
@@ -21,20 +21,20 @@ export const get_videogames = () => {
     //     });
     //   });
 
-    const res = await axios(`/videogames`);
-    const data = res.data;
+    const res = await axios(`${axios.defaults.baseURL}/videogames`)
+    const data = res.data
 
     return dispatch({
       type: GET_VIDEOGAMES,
-      payload: data,
-    });
-  };
-};
+      payload: data
+    })
+  }
+}
 
 // obtener juego por id
 export const get_videogames_id = (id) => {
   return async (dispatch) => {
-    // await fetch(`/videogames/${id}`)
+    // await fetch(`${axios.defaults.baseURL}/videogames/${id}`)
     //   .then((res) => res.json())
     //   .then((data) => {
     //     dispatch({
@@ -43,15 +43,15 @@ export const get_videogames_id = (id) => {
     //     });
     //   });
 
-    const res = await axios(`/videogames/${id}`);
-    const data = res.data;
+    const res = await axios(`${axios.defaults.baseURL}/videogames/${id}`)
+    const data = res.data
 
     return dispatch({
       type: GET_VIDEOGAME_ID,
-      payload: data,
-    });
-  };
-};
+      payload: data
+    })
+  }
+}
 
 // obtener generos
 export const get_videogame_genres = () => {
@@ -65,15 +65,15 @@ export const get_videogame_genres = () => {
     //     });
     //   });
 
-    const res = await axios(`/genres`);
-    const data = res.data;
+    const res = await axios(`${axios.defaults.baseURL}/genres`)
+    const data = res.data
 
     return dispatch({
       type: GET_VIDEOGAME_GENRES,
-      payload: data,
-    });
-  };
-};
+      payload: data
+    })
+  }
+}
 
 // obtener juegos por nombre
 export const get_videogames_name = (name) => {
@@ -87,52 +87,54 @@ export const get_videogames_name = (name) => {
     //     });
     //   });
 
-    const res = await axios(`/videogames?search=${name}`);
-    const data = res.data;
+    const res = await axios(
+      `${axios.defaults.baseURL}/videogames?search=${name}`
+    )
+    const data = res.data
 
     return dispatch({
       type: GET_VIDEOGAMES_NAME,
-      payload: data,
-    });
-  };
-};
+      payload: data
+    })
+  }
+}
 
 // crear un juego
 export const post_create_videogame = (game) => {
   return async (dispatch) => {
-    const res = await axios.post(`/videogames`, game);
-    return dispatch({ type: CREATE_VIDEOGAME, payload: res.data });
-  };
-};
+    const res = await axios.post(`${axios.defaults.baseURL}/videogames`, game)
+    return dispatch({ type: CREATE_VIDEOGAME, payload: res.data })
+  }
+}
 
 // filtrado por genero
 export const filter_by_genre = (genre) => {
   return {
     type: FILTER_BY_GENRE,
-    payload: genre,
-  };
-};
+    payload: genre
+  }
+}
 
 // filtrado por puntuacion
 export const filter_rating = (rating) => {
   return {
     type: FILTER_RATING,
-    payload: rating,
-  };
-};
+    payload: rating
+  }
+}
 
 // filtrado albafetico
 export const filter_alphabetic = (name) => {
   return {
     type: FILTER_ALPHABETIC,
-    payload: name,
-  };
-};
+    payload: name
+  }
+}
 
 // filtrado por creado o existente
 export const created_existing = (value) => {
   return {
     type: CREATED_EXISTING,
-    payload: value,
-  };
-};
+    payload: value
+  }
+}

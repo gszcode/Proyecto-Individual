@@ -32,7 +32,8 @@ module.exports = (sequelize) => {
       },
       image: {
         type: DataTypes.TEXT,
-        defaultValue: "https://www.freepik.com/free-photos-vectors/game-button",
+        defaultValue:
+          "https://http2.mlstatic.com/storage/mshops-appearance-api/images/15/254304515/logo-2020060212005277900.png",
       },
       created: {
         type: DataTypes.BOOLEAN,

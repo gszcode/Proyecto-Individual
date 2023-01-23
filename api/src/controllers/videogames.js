@@ -218,18 +218,3 @@ module.exports = {
     }
   },
 };
-
-// delete
-// deleteVideoGame = async (req, res) => {
-//   const {id} = req.params
-
-//   try {
-//     const videogame = await Videogame.destroy({
-//       where: {id: id}
-//     } )
-
-//     res.json({msg: 'videogame deleted successfully'})
-//   } catch (error) {
-//     res.status(404).json(error)
-//   }
-// }
